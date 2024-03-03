@@ -1,0 +1,59 @@
+###
+
+GET http://localhost:9999/seed HTTP/2.0
+
+###
+
+GET http://localhost:9999/clientes/1/extrato HTTP/2.0
+
+###
+
+POST http://localhost:9999/clientes/1/transacoes HTTP/2.0
+Content-Type: "application/json"
+
+{
+  "valor": 1,
+  "tipo" : "d",
+  "descricao" : "descricao"
+}
+
+###
+
+POST http://localhost:9999/clientes/1/transacoes HTTP/2.0
+Content-Type: "application/json"
+
+{
+  "valor": 1,
+  "tipo" : "c",
+  "descricao" : "descricao"
+}
+
+###
+
+GET http://localhost:9999/clientes/{{$randomInt 1 7}}/extrato HTTP/2.0
+
+###
+
+POST http://localhost:9999/clientes/{{$randomInt 1 7}}/transacoes HTTP/2.0
+Content-Type: "application/json"
+
+{
+  "valor": 10000,
+  "tipo" : "d",
+  "descricao" : "descricao"
+}
+
+###
+
+GET http://localhost:3000/clientes/{{$randomInt 1 7}}/extrato HTTP/2.0
+
+###
+
+POST http://localhost:3000/clientes/{{$randomInt 1 7}}/transacoes HTTP/2.0
+Content-Type: "application/json"
+
+{
+  "valor": 10000,
+  "tipo" : "d",
+  "descricao" : "descricao"
+}

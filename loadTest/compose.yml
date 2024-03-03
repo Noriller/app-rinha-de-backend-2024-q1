@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  gatling:
+    build:
+      context: .
+    volumes:
+      - ./load-test/user-files:/gatling/user-files
+      - ./load-test/results:/gatling/results
+    network_mode: host
