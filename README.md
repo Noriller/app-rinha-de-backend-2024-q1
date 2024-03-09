@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# App Rinha de Backend 2024 Q1
 
-## Getting Started
+From the challenge: <https://github.com/zanfranceschi/rinha-de-backend-2024-q1/>
 
-First, run the development server:
+## Built with
+
+- [Next.js](https://nextjs.org/)
+- [Drizzle](https://github.com/drizzle-team/drizzle-orm)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Better SQLite](https://github.com/WiseLibs/better-sqlite3)
+- [Nginx](https://nginx.org/)
+
+### Why Next.js?
+
+Using Next because why not?
+
+Wanted to check how good would be the server side of Next under stress, so gave it a try.
+
+## How to use
+
+The best way to run is with Docker Compose.
+If you can run makefiles, then just run them in one terminal:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+make up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then you can also run a tuned test to be very stressful in another terminal with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+make gatling
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running without Docker
 
-## Learn More
+Use, initially, Node 21.6.2
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+nvm use 21.6.2
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+But you can upgrade it if you want.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Today, Node 21 is the newest version, probably with the best performance, even if it might be unstable.
 
-## Deploy on Vercel
+Install what's needed:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+corepack enable pnpm
+pnpm i --frozen-lockfile
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+And then run:
+
+```bash
+pnpm run migrate
+pnpm run dev
+```
+
+### After changing something
+
+After changes, the best way to test is still using the docker commands above.
+
+With makefile:
+
+```bash
+# use upb that forces a rebuild and recreate
+make upb
+make gatling
+```

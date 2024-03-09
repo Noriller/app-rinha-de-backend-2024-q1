@@ -4,6 +4,7 @@ services:
   api01: &api
     build:
       context: ..
+    # image: brunonoriller/app-rinha-de-backend-2024-q1:latest
     hostname: api01
     volumes:
       - data:/app/data
@@ -57,7 +58,7 @@ services:
 networks:
   default:
     driver: bridge
-    name: rinha-nginx-2024q1
+    name: noriller-rinha-2024-q1
 
 volumes:
   data:
