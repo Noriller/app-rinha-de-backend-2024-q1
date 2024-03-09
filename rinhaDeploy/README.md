@@ -16,4 +16,5 @@ Submissão feita com:
 
 ### Social
 
-[LinkedIn](https://www.linkedin.com/in/noriller/)
+- [Github](https://github.com/Noriller)
+- [LinkedIn](https://www.linkedin.com/in/noriller/)
