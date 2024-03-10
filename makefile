@@ -25,4 +25,4 @@ tagImage:
 	docker tag app-rinha-de-backend-2024-q1 brunonoriller/app-rinha-de-backend-2024-q1:$(TAG)
 
 pushImage:
-	docker push brunonoriller/app-rinha-de-backend-2024-q1
+	docker push brunonoriller/app-rinha-de-backend-2024-q1 --all-tags
