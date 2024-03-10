@@ -47,7 +47,7 @@ function doInsert({
   tipo: 'c' | 'd';
   descricao: string;
   valor: number;
-}) {
+  }, tries = 10) {
   // since it's seeded, there will be a last transaction
   const { bal, id: last } = preparedGetLast.get({ user })!;
 
@@ -88,8 +88,15 @@ function doInsert({
 
     // concurrency error
     if (error.code === errors.SQLITE_CONSTRAINT_UNIQUE) {
+      // try again, but not until it passes
+      // as to not cause infinite loops
+      // this will help under heavy loads
+      // at the cost of some calls being returned
+      if (tries <= 0) {
+        return NextResponse.json({}, { status: 422 });
+      }
       // try again
-      return doInsert({ user, tipo, descricao, valor });
+      return doInsert({ user, tipo, descricao, valor }, tries - 1);
     }
 
     // ???
