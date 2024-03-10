@@ -12,8 +12,10 @@ import io.gatling.http.Predef._
 
 class RinhaBackendCrebitosSimulation
   extends Simulation {
-  val multi = 1.5 * 2
-  val duration = 1.minutes
+  // val multi = 1.5
+  val multi = 2
+  // val duration = 2.minutes
+  val duration = 30.seconds
 
   def randomClienteId() = Random.between(1, 5 + 1)
   def randomValorTransacao() = Random.between(1, 10000 + 1)

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-RESULTS_DIR=./load-test/user-files/results
-OUTPUT_REPORT=./gatling-text-report.txt
+RESULTS_DIR=./loadTest/load-test/results
+OUTPUT_REPORT=./loadTest/gatling-text-report.txt
 
 error() {
     echo "Você precisa ter jq instalado:"

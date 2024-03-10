@@ -13,6 +13,9 @@ gatling:
 gatClean:
 	sudo rm -rf loadTest/load-test/results/*
 
+gatResult:
+	sh ./loadTest/gatling-text-report.sh
+
 buildImage:
 	docker build -t app-rinha-de-backend-2024-q1 .
 

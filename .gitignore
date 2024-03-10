@@ -38,3 +38,4 @@ next-env.d.ts
 # other
 /data
 /loadTest/load-test/results/*
+/loadTest/gatling-text-report.txt
