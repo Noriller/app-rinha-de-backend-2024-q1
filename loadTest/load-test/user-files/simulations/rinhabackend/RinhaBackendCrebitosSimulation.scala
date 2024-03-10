@@ -12,7 +12,8 @@ import io.gatling.http.Predef._
 
 class RinhaBackendCrebitosSimulation
   extends Simulation {
-  val multi = 1.5
+  val multi = 1.5 * 2
+  val duration = 1.minutes
 
   def randomClienteId() = Random.between(1, 5 + 1)
   def randomValorTransacao() = Random.between(1, 10000 + 1)
@@ -112,7 +113,7 @@ class RinhaBackendCrebitosSimulation
     )
   )
 
-  val validacaConcorrentesNumRequests = 25
+  val validacaConcorrentesNumRequests = (25 * multi * multi).toInt
   val validacaoTransacoesConcorrentes = (tipo: String) =>
     scenario(s"validação concorrência transações - ${tipo}")
     .exec(
@@ -306,16 +307,16 @@ class RinhaBackendCrebitosSimulation
         atOnceUsers(1)
       ).andThen(
         debitos.inject(
-          rampUsersPerSec(1*multi*multi).to(220*multi).during(2.minutes),
-          constantUsersPerSec(220*multi).during(2.minutes)
+          rampUsersPerSec(1*multi*multi).to(220*multi).during(duration),
+          constantUsersPerSec(220*multi).during(duration)
         ),
         creditos.inject(
-          rampUsersPerSec(1*multi*multi).to(110*multi).during(2.minutes),
-          constantUsersPerSec(110*multi).during(2.minutes)
+          rampUsersPerSec(1*multi*multi).to(110*multi).during(duration),
+          constantUsersPerSec(110*multi).during(duration)
         ),
         extratos.inject(
-          rampUsersPerSec(1*multi*multi).to(10*multi).during(2.minutes),
-          constantUsersPerSec(10*multi).during(2.minutes)
+          rampUsersPerSec(1*multi*multi).to(10*multi).during(duration),
+          constantUsersPerSec(10*multi).during(duration)
         )
       )
     )
