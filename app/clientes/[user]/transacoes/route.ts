@@ -47,7 +47,7 @@ function doInsert({
   tipo: 'c' | 'd';
   descricao: string;
   valor: number;
-  }, tries = 10) {
+  }, tries = 20) {
   // since it's seeded, there will be a last transaction
   const { bal, id: last } = preparedGetLast.get({ user })!;
 
