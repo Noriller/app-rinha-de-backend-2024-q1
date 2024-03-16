@@ -1,6 +1,15 @@
 up:
 	docker compose -f rinhaDeploy/docker-compose.yml up
 
+up3:
+	docker compose -f rinhaDeploy/docker-compose.3.yml up
+
+up4:
+	docker compose -f rinhaDeploy/docker-compose.4.yml up
+
+up5:
+	docker compose -f rinhaDeploy/docker-compose.5.yml up
+
 upb:
 	docker compose -f rinhaDeploy/docker-compose.yml up --build --force-recreate
 
