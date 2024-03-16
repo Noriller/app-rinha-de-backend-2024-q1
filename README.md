@@ -100,3 +100,15 @@ With makefile:
 make upb
 make gatling
 ```
+
+## Changing the test
+
+First, open the `scala` file: `loadTest/load-test/user-files/simulations/rinhabackend/RinhaBackendCrebitosSimulation.scala`.
+That file is the one from the challenge that I copied and then played with.
+
+There are two variables to play with:
+
+- multi
+  - a multiplier of active users and ramp of users during the test
+- duration
+  - how long it will hold the test, and also how much time it will ramp up
