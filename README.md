@@ -38,7 +38,13 @@ The best way to run is with Docker Compose.
 If you can run makefiles, then just run them in one terminal:
 
 ```bash
+## for the base version with 2 replicas
 make up
+
+## for other versions with more replicas
+make up3
+make up4
+make up5
 ```
 
 Then you can also run a tuned test to be very stressful in another terminal with:
@@ -52,7 +58,8 @@ make gatling
 Use, initially, Node 21.6.2
 
 ```bash
-nvm use 21.6.2
+## in this folder (to use from .nvmrc)
+nvm use
 ```
 
 But you can upgrade it if you want.
@@ -62,15 +69,24 @@ Today, Node 21 is the newest version, probably with the best performance, even i
 Install what's needed:
 
 ```bash
-corepack enable pnpm
-pnpm i --frozen-lockfile
+# corepack makes sure that the right version of pnpm is used
+# even if you don't have it installed
+corepack pnpm i --frozen-lockfile
 ```
 
 And then run:
 
 ```bash
-pnpm run migrate
-pnpm run dev
+corepack pnpm run migrate
+corepack pnpm run dev
+```
+
+If you want to have `pnpm` installed and use it without the `corepack`:
+
+```bash
+corepack enable
+# this will use the version from `package.json`
+corepack prepare --activate
 ```
 
 ### After changing something
